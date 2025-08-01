@@ -21,9 +21,9 @@
 
 ### 🔄 흐름 예시 – 로그인
   1.	AuthController → login()
-	2.	AuthService → userClient.findByLoginId()
-	3.	비밀번호 확인 + 상태(WITHDRAW 등) 체크
-	4.	JwtUtil을 통해 AccessToken 발급
+  2.	AuthService → userClient.findByLoginId()
+  3.	비밀번호 확인 + 상태(WITHDRAW 등) 체크
+  4.	JwtUtil을 통해 AccessToken 발급
 
 ## 👤 User 도메인
 
@@ -41,10 +41,10 @@
 - `enums`: `UserStatus`, `UserRole`
 
 ### 🔄 회원가입 흐름
-[AuthController]                  ← 사용자가 회원가입 요청
-    ↓
-[AuthService]
-    └─ userClient.existsByLoginId()
+	[AuthController]                  ← 사용자가 회원가입 요청
+   	 ↓
+	[AuthService]
+   	 └─ userClient.existsByLoginId()
             ↓
         [UserClientImpl]
             ↓
@@ -52,22 +52,22 @@
             ↓
         [UserRepository] → boolean 반환 (중복 체크)
 
-    ↓
+   	 ↓
 
-    └─ userClient.createUser(CreateUserDto)
-            ↓
-        [UserClientImpl]
-            ↓
-        [UserService]
-            ↓
-        [Users Entity 생성 + 저장]
+   	 └─ userClient.createUser(CreateUserDto)
+        	    ↓
+        	[UserClientImpl]
+         	   ↓
+       	 [UserService]
+        	    ↓
+	        [Users Entity 생성 + 저장]
 
 
 ### 🔄 로그인 흐름 
-[AuthController]                  ← 사용자가 로그인 요청
-    ↓
-[AuthService]
-    └─ userClient.findByLoginId()
+	[AuthController]                  ← 사용자가 로그인 요청
+    		↓
+	[AuthService]
+    	└─ userClient.findByLoginId()
             ↓
         [UserClientImpl]
             ↓
@@ -77,11 +77,11 @@
             ↓
         Users → UserDto 변환
 
-    ↓
-[AuthService]
-    └─ 비밀번호 일치 확인
-    └─ 탈퇴 상태(WITHDRAW) 여부 확인
-    └─ JWT 토큰 생성 → LoginResponse 생성
+    	↓
+	[AuthService]
+   	 └─ 비밀번호 일치 확인
+    	└─ 탈퇴 상태(WITHDRAW) 여부 확인
+    	└─ JWT 토큰 생성 → LoginResponse 생성
 
 ---
 
